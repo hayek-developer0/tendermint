@@ -64,10 +64,6 @@ like the file below, however, double check by inspecting the
     # so the app can decide if we should keep the connection or not
     filter_peers = false
 
-    # When true, metrics are served under /metrics using a Prometheus client
-    # Check out the documentation for the list of available metrics.
-    monitoring = {{ .BaseConfig.Monitoring }}
-
     ##### advanced configuration options #####
 
     ##### rpc server configuration options #####
@@ -193,3 +189,15 @@ like the file below, however, double check by inspecting the
     # desirable (see the comment above). IndexTags has a precedence over
     # IndexAllTags (i.e. when given both, IndexTags will be indexed).
     index_all_tags = {{ .TxIndex.IndexAllTags }}
+
+
+    ##### instrumentation configuration options #####
+    [instrumentation]
+
+    # When true, Prometheus metrics are served under /metrics on
+    # PrometheusListenAddr.
+    # Check out the documentation for the list of available metrics.
+    prometheus = false
+
+    # Address to listen for Prometheus collector(s) connections
+    prometheus_listen_addr = ":26660"
